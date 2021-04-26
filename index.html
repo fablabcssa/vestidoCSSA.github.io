@@ -16,7 +16,9 @@
     var año = 0;
     var hora = 0;
     var minutos = 0;
-    var result8 = 0;
+    var but = 0;
+    var car = 0;
+    var air =0;
     
     var result1anterior = 0;
     var result2anterior = 0;
@@ -80,13 +82,27 @@
                         
                 
         });
-       $.getJSON("https://api.thingspeak.com/channels/1058626/fields/9/last.json?api_key=ZPBBEFIMDCPRMZOK", function(result){
+       $.getJSON("https://api.thingspeak.com/channels/1288633/fields/7/last.json?api_key=8XM1WXCRPOO1294M", function(result){
         	
             var m = result;
-            result8=Number(m.field9);
+            but=Number(m.field7);
           
                         
                 
+        });
+       
+       $.getJSON("https://api.thingspeak.com/channels/1288633/fields/6/last.json?api_key=8XM1WXCRPOO1294M", function(result){
+        	
+            var m = result;
+            car=Number(m.field6);
+             
+        });
+       
+        $.getJSON("https://api.thingspeak.com/channels/1288633/fields/5/last.json?api_key=8XM1WXCRPOO1294M", function(result){
+        	
+            var m = result;
+            air=Number(m.field5);
+             
         });
        
         }
@@ -97,7 +113,19 @@
         document.getElementById("descripcionaplicaciontemp").innerHTML=temperatura;   
         
         var humedad = (hume + "%");
-        document.getElementById("descripcionaplicacionhum").innerHTML=humedad;   
+        document.getElementById("descripcionaplicacionhum").innerHTML=humedad;
+        
+        var butano = (but + "%");
+        document.getElementById("descripcionaplicacionbut").innerHTML=butano;
+        
+        var carbono = (car + "%");
+        document.getElementById("descripciondioxido").innerHTML=carbono;
+        
+        var aire = (air + "%");
+        document.getElementById("descripcionaire").innerHTML=aire;
+        
+        
+        
     }
     function fecha(){
         var fecha = ("La útlima actualización se realizó el " + dia + "/" + mes + "/" + año + " a las " + hora + ":" + minutos + ".");
@@ -172,17 +200,19 @@
                     <h3 id="gasess">Gases en el ambiente</h3>
                     <div id="gasesvalores">
                         <h3 id="gasesvalores1">Butano</h3>
-                        <h5 id="descripcionaplicaciongas">La ubicación del dispositivo se actualiza cada 20 segundos.</h5>
+                        <center>
+                        <h5 id="descripcionaplicacionbut"></h5>
+                            </center>
                     </div>
             
                     <div id="valordioxido">
                         <h3 id="valordioxido1">Dióxido de Carbono</h3>
-                        <h5 id="descripciondioxido">La ubicación del dispositivo se actualiza cada 20 segundos.</h5>
+                        <h5 id="descripciondioxido"></h5>
                     </div>
             
                     <div id="valorcalidaddelaire">
                         <h3 id="valoraire1">Calidad del Aire</h3>
-                        <h5 id="descripcionaire">La ubicación del dispositivo se actualiza cada 20 segundos.</h5>
+                        <h5 id="descripcionaire"></h5>
                     </div>
             
             
@@ -390,7 +420,7 @@
     }
     
        #gasesvalores{
-        background: #F5CBA7 ;
+        background: #F9B78D  ;
         float:left;
         padding: 40px;
         height: 160px;
@@ -405,7 +435,7 @@
     }
     
     #valordioxido{
-        background: #BCF5A7 ;
+        background: #8DC4F9 ;
         float:left;
         padding: 40px;
         height: 160px;
@@ -420,7 +450,7 @@
     }
     
     #valorcalidaddelaire{
-        background: #A7CFF5 ;
+        background: #95D59B  ;
         float:left;
         padding: 40px;
         height: 160px;
@@ -435,7 +465,7 @@
     }
     
         #temperatura{
-        background: #F5F4A7 ;
+        background: #F98D8D ;
         float:left;
         padding: 40px;
         height: 160px;
@@ -450,7 +480,7 @@
     }
     
         #humedad{
-        background: #F5A7A7;
+        background: #F9EF8D  ;
         float:left;
         padding: 40px;
         height: 160px;
@@ -620,27 +650,29 @@
         color: #424949;
     }
     
-    #descripcionaplicaciongas{
-        font-size:-10px;
+    #descripcionaplicacionbut{
+        font-size:30px;
         font-family: Raleway;
         font-weight: 300;
-        margin-top: 0px;
+        margin-top: 50px;
         color: #424949;
     }
     
     #descripciondioxido{
-        font-size:-10px;
+        font-size:30px;
         font-family: Raleway;
         font-weight: 300;
-        margin-top: 0px;
+        margin-top: 40px;
+        margin-left: 40px;
         color: #424949;
     }
     
     #descripcionaire{
-        font-size:-10px;
+        font-size:35px;
         font-family: Raleway;
         font-weight: 300;
-        margin-top: 0px;
+        margin-top: 50px;
+        margin-left: 160px;
         color: #424949;
     }
     
